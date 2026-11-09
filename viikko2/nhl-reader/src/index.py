@@ -1,7 +1,6 @@
-from player import Player
+"""Compatibility entry point for the NHL statistics application."""
 
-def main():
-    pass
+from main import main
 
 if __name__ == "__main__":
     main()
