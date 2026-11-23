@@ -85,4 +85,17 @@ class TestKauppa(unittest.TestCase):
             "pekka", 42, "12345", "33333-44455", 5
         )
         self.varasto_mock.hae_tuote.assert_called_once_with(1)
+
+    def test_poistettaessa_tuote_korista_se_palautetaan_varastoon(self):
+        kauppa = self.kauppa
+
+        kauppa.aloita_asiointi()
+        kauppa.lisaa_koriin(1)
+        kauppa.poista_korista(1)
+        kauppa.tilimaksu("pekka", "12345")
+
+        self.varasto_mock.palauta_varastoon.assert_called_once_with(self.tuotteet[1])
+        self.pankki_mock.tilisiirto.assert_called_once_with(
+            "pekka", 42, "12345", "33333-44455", 0
+        )
     
