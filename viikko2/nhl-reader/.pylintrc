@@ -1,0 +1,15 @@
+[DESIGN]
+
+max-args=10
+disable=too-few-public-methods
+
+
+[FORMAT]
+
+max-line-length = 130
+
+indent-string = "    "
+
+[REFACTORING]
+
+max-nested-blocks = 2
